@@ -1,0 +1,62 @@
+<h1>Crud de Pacientes</h1>
+<div>
+  <div class="container" >
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Patient Name</th>
+          <th scope="col">Patient gender</th>
+          <th scope="col">Operations</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let patient of patients">
+            <th scope="row">{{ patient.id }}</th>
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.gender }}</td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="deletePatient(patient.id)">Delete</button>
+              <button class="btn btn-light"></button>
+              <button type="button" class="btn btn-info" (click)="selectPatient(patient)">Update</button>
+            </td>
+          </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- <div class="d-flex justify-content-between p-2">
+    <ngb-pagination
+      [collectionSize]="collectionSize"
+      [(page)]="page"
+      [pageSize]="pageSize"
+      (pageChange)="refreshCountries()"
+      >
+    </ngb-pagination>
+
+    <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+      <option [ngValue]="2">2 items per page</option>
+      <option [ngValue]="4">4 items per page</option>
+      <option [ngValue]="6">6 items per page</option>
+    </select>
+  </div> -->
+
+  <br>
+
+  <div class="container">
+    <form #f = "ngForm">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" [(ngModel)] = "selectedPatient.name" class="form-control" >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Gender</label>
+        <input type="text" name="gender" [(ngModel)] = "selectedPatient.gender" class="form-control">
+      </div>
+      <input type="button" (click)="createOrUpdatePatient(f)" value="Create or Update Patient" class="btn btn-primary">
+    </form>
+  </div>
+
+
+</div>
